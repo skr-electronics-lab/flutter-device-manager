@@ -9,11 +9,11 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=skr-electronics-lab.flutter-device-manager">
-    <img src="https://img.shields.io/visual-studio-marketplace/v/skr-electronics-lab.flutter-device-manager?style=flat-square&color=blue&label=Marketplace" alt="Marketplace Version" />
+  <a href="https://marketplace.visualstudio.com/items?itemName=skrelectronicslab.flutter-device-manager">
+    <img src="https://img.shields.io/visual-studio-marketplace/v/skrelectronicslab.flutter-device-manager?style=flat-square&color=blue&label=Marketplace" alt="Marketplace Version" />
   </a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=skr-electronics-lab.flutter-device-manager">
-    <img src="https://img.shields.io/visual-studio-marketplace/i/skr-electronics-lab.flutter-device-manager?style=flat-square&color=emerald&label=Installs" alt="Installs" />
+  <a href="https://marketplace.visualstudio.com/items?itemName=skrelectronicslab.flutter-device-manager">
+    <img src="https://img.shields.io/visual-studio-marketplace/i/skrelectronicslab.flutter-device-manager?style=flat-square&color=emerald&label=Installs" alt="Installs" />
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-blueviolet.svg?style=flat-square" alt="License" />
