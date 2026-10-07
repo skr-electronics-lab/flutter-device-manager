@@ -1,0 +1,245 @@
+{
+  "name": "flutter-device-manager",
+  "displayName": "Flutter Device Manager",
+  "description": "All-in-one Flutter & Android developer companion by SKR Electronics Lab: Wireless ADB over Wi-Fi, QR code pairing, scrcpy screen mirroring, reverse port forwarding, real-time Logcat filtering, deep link testing, and 1-click Flutter workflow.",
+  "version": "1.0.0",
+  "icon": "media/icon.png",
+  "author": {
+    "name": "SKR Electronics Lab",
+    "url": "https://skrelectronicslab.com"
+  },
+  "publisher": "skr-electronics-lab",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skr-electronics-lab/flutter-device-manager.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "flutter",
+    "dart",
+    "android",
+    "adb",
+    "wireless-debugging",
+    "scrcpy",
+    "screen-mirror",
+    "device-manager",
+    "logcat",
+    "reverse-proxy",
+    "port-forwarding",
+    "qr-code",
+    "mobile",
+    "emulator",
+    "developer-tools"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:flutterDeviceManager.view",
+    "onCommand:flutterDeviceManager.openPanel",
+    "onStartupFinished"
+  ],
+  "extensionKind": [
+    "workspace",
+    "ui"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true,
+      "description": "Device management and ADB/Flutter command execution require running the workspace tools."
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "flutterDeviceManager",
+          "title": "Flutter Device Manager",
+          "icon": "media/fdm.svg"
+        }
+      ]
+    },
+    "views": {
+      "flutterDeviceManager": [
+        {
+          "id": "flutterDeviceManager.view",
+          "name": "Devices",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Flutter Device Manager",
+      "properties": {
+        "flutterDeviceManager.adbPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the adb executable. Leave empty to auto-detect from ANDROID_HOME, ANDROID_SDK_ROOT, Android Studio, or PATH."
+        },
+        "flutterDeviceManager.flutterPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the flutter executable. Leave empty to auto-detect from PATH or FLUTTER_ROOT."
+        },
+        "flutterDeviceManager.autoRefreshMs": {
+          "type": "number",
+          "default": 5000,
+          "minimum": 1000,
+          "description": "How often (in milliseconds) the device list automatically refreshes."
+        },
+        "flutterDeviceManager.rememberLastDevice": {
+          "type": "boolean",
+          "default": true,
+          "description": "Remember and restore the last selected device on startup."
+        },
+        "flutterDeviceManager.autoReconnect": {
+          "type": "boolean",
+          "default": true,
+          "description": "Attempt to reconnect to previously used wireless devices on startup."
+        },
+        "flutterDeviceManager.logLevel": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warn",
+            "error"
+          ],
+          "default": "info",
+          "description": "Default level for captured device logs."
+        },
+        "flutterDeviceManager.screenshotDir": {
+          "type": "string",
+          "default": "",
+          "description": "Directory where screenshots are saved. Leave empty to use ~/Pictures/Flutter Device Manager."
+        },
+        "flutterDeviceManager.recordingDir": {
+          "type": "string",
+          "default": "",
+          "description": "Directory where screen recordings are saved. Leave empty to use ~/Pictures/Flutter Device Manager."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "flutterDeviceManager.openPanel",
+        "title": "Open Panel",
+        "category": "Flutter Device Manager"
+      },
+      {
+        "command": "flutterDeviceManager.refreshDevices",
+        "title": "Refresh Devices",
+        "icon": "$(refresh)",
+        "category": "Flutter Device Manager"
+      },
+      {
+        "command": "flutterDeviceManager.restartAdb",
+        "title": "Restart ADB Server",
+        "icon": "$(debug-restart)",
+        "category": "Flutter Device Manager"
+      },
+      {
+        "command": "flutterDeviceManager.killAdb",
+        "title": "Kill ADB Server",
+        "category": "Flutter Device Manager"
+      },
+      {
+        "command": "flutterDeviceManager.connectWireless",
+        "title": "Connect Wireless Device",
+        "icon": "$(device-mobile)",
+        "category": "Flutter Device Manager"
+      },
+      {
+        "command": "flutterDeviceManager.flutterDoctor",
+        "title": "Run Flutter Doctor",
+        "category": "Flutter Device Manager"
+      },
+      {
+        "command": "flutterDeviceManager.takeScreenshot",
+        "title": "Take Screenshot",
+        "category": "Flutter Device Manager"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "flutterDeviceManager.openPanel",
+          "when": "true"
+        },
+        {
+          "command": "flutterDeviceManager.refreshDevices",
+          "when": "true"
+        },
+        {
+          "command": "flutterDeviceManager.restartAdb",
+          "when": "true"
+        },
+        {
+          "command": "flutterDeviceManager.killAdb",
+          "when": "true"
+        },
+        {
+          "command": "flutterDeviceManager.connectWireless",
+          "when": "true"
+        },
+        {
+          "command": "flutterDeviceManager.flutterDoctor",
+          "when": "true"
+        },
+        {
+          "command": "flutterDeviceManager.takeScreenshot",
+          "when": "true"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "flutterDeviceManager.refreshDevices",
+          "when": "view == flutterDeviceManager.view",
+          "group": "navigation@1"
+        },
+        {
+          "command": "flutterDeviceManager.restartAdb",
+          "when": "view == flutterDeviceManager.view",
+          "group": "navigation@2"
+        },
+        {
+          "command": "flutterDeviceManager.connectWireless",
+          "when": "view == flutterDeviceManager.view",
+          "group": "navigation@3"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "flutterDeviceManager.view",
+        "contents": "Manage your Android devices, wireless connections, and Flutter workflow.\n[Connect Wireless Device](command:flutterDeviceManager.connectWireless)\n[Refresh Devices](command:flutterDeviceManager.refreshDevices)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "check": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.webview.json",
+    "build": "npm run build:web && npm run build:ext",
+    "build:ext": "esbuild src/extension.ts --bundle --sourcemap --platform=node --target=node18 --external:vscode --format=cjs --outfile=dist/extension.js",
+    "build:web": "esbuild src/webview/main.ts --bundle --sourcemap --target=chrome110 --format=iife --outfile=dist/webview/main.js",
+    "watch": "esbuild src/extension.ts --bundle --sourcemap --platform=node --target=node18 --external:vscode --format=cjs --outfile=dist/extension.js --watch & esbuild src/webview/main.ts --bundle --sourcemap --target=chrome110 --format=iife --outfile=dist/webview/main.js --watch",
+    "package": "vsce package",
+    "compile": "npm run build"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/qrcode": "^1.5.6",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.4.0"
+  }
+}
