@@ -1,117 +1,144 @@
-# Flutter Device Manager
+<p align="center">
+  <img src="media/icon.png" width="110" height="110" alt="Flutter Device Manager Logo" style="border-radius: 22px;" />
+</p>
+
+<h1 align="center">Flutter Device Manager</h1>
 
 <p align="center">
-  <img src="media/icon.png" width="120" height="120" alt="Flutter Device Manager" style="border-radius: 20px;" />
+  <strong>The ultimate wireless ADB & Android device companion for Flutter developers inside Visual Studio Code.</strong>
 </p>
 
 <p align="center">
-  <strong>The all-in-one Flutter & Android developer companion by <a href="https://skrelectronicslab.com">SKR Electronics Lab</a></strong>
+  <a href="https://marketplace.visualstudio.com/items?itemName=skr-electronics-lab.flutter-device-manager">
+    <img src="https://img.shields.io/visual-studio-marketplace/v/skr-electronics-lab.flutter-device-manager?style=flat-square&color=blue&label=Marketplace" alt="Marketplace Version" />
+  </a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=skr-electronics-lab.flutter-device-manager">
+    <img src="https://img.shields.io/visual-studio-marketplace/i/skr-electronics-lab.flutter-device-manager?style=flat-square&color=emerald&label=Installs" alt="Installs" />
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-blueviolet.svg?style=flat-square" alt="License" />
+  </a>
+  <a href="https://ko-fi.com/skrelectronicslab" target="_blank">
+    <img src="https://img.shields.io/badge/Ko--fi-Support-ff5e5b?style=flat-square&logo=ko-fi&logoColor=white" alt="Support on Ko-fi" />
+  </a>
 </p>
 
-A modern, production-ready VS Code extension for Flutter and Android developers. It brings a clean, native device dashboard directly inside VS Code: connect wirelessly over Wi-Fi, pair using QR codes, mirror device screens with **scrcpy**, forward ports with **adb reverse**, inspect Logcat with quick filters, dispatch deep links, capture screenshots to your clipboard, and manage project builds — all without leaving your editor.
+<p align="center">
+  <img src="media/showcase.webp" alt="Flutter Device Manager Showcase" width="100%" style="border-radius: 10px; max-width: 900px;" />
+</p>
 
 ---
 
-## Key Features
+## ⚡ Overview
 
-### 1. Device Dashboard & Card Management
-- Automatic detection of physical USB devices, Wi-Fi devices, and Android emulators.
-- Displays accurate device model, brand, Android OS release, API level, IP address, and real-time battery status.
-- Symmetrical, native VS Code styling matching any dark/light theme.
-- **Smart Stale Device Cleanup**: Automatically prunes duplicate offline sockets and ghost endpoints when reconnecting.
-- **Dedicated Offline Section**: Keeps disconnected devices isolated with 1-click **Clear Offline** pruning.
+Say goodbye to tangled cables, disconnected terminals, and hunting for IP addresses. 
 
-### 2. Scrcpy Screen Mirroring (1-Click)
-- Launch ultra-low-latency, high-performance screen mirroring directly from the device card or details panel using **scrcpy**.
-- Runs in a detached, dedicated always-on-top window with full keyboard and mouse control.
+**Flutter Device Manager** turns VS Code into a comprehensive, native command center for your physical phones, emulators, and wireless devices. Pair wirelessly in seconds using QR codes, mirror screens with ultra-low latency via **scrcpy**, forward ports with **adb reverse**, filter real-time Logcat streams, and test deep links — all without leaving your editor.
 
-### 3. Network Traffic & Port Forwarding (adb reverse)
-- Built-in reverse proxy tool (`adb reverse tcp:<port> tcp:<port>`).
-- Forward backend dev ports (e.g. `8080`, `3000`, `5000`) so apps running on physical Wi-Fi or USB devices can query `http://localhost:<port>` without modifying device network settings.
-- View active forwards and remove or clear them in 1 click.
+---
 
-### 4. Real-Time Logcat Viewer with Auto-Scroll & Presets
-- Live streaming output from ADB and resident Flutter processes.
-- **Auto-Scroll Control**: Locks to the latest line by default, and gently pauses when you scroll up to inspect stack traces. Toggle auto-scroll on/off at any time.
-- **1-Click Quick Preset Filters**:
-  - **All Logs**: Complete unfiltered stream.
-  - **Flutter Only**: Isolates flutter engine and app framework tags.
-  - **Fatal Crashes**: Highlights fatal exceptions, crashes, and AndroidRuntime errors.
-  - **Network / HTTP**: Captures Dio, OkHttp, Retrofit, and HTTP socket traffic.
-- Full-text search, level filter (Verbose, Debug, Info, Warn, Error), pause/resume, clipboard copy, and `.txt` export.
+## ✨ Key Features at a Glance
 
-### 5. Deep Link & Intent Dispatcher
-- Test app navigation and universal links in seconds without opening command prompt:
+| Feature | Description |
+|---|---|
+| 📶 **QR & Wireless Pairing** | 1-scan QR code pairing (Android 11+) with real-time countdown or IP:Port pairing. |
+| 🖥️ **Scrcpy Screen Mirroring** | 1-click low-latency, high-fps screen mirroring in a dedicated interactive window. |
+| 🔄 **Port Forwarding (Reverse Proxy)** | Built-in `adb reverse` tool so mobile devices can access your `localhost` APIs. |
+| 📋 **Logcat Viewer + Auto-Scroll** | Live log stream with smart auto-scroll and 1-click presets (Flutter, Crashes, Network). |
+| 🔗 **Deep Link Dispatcher** | Trigger custom schemes (`myapp://path`) and universal links directly on device. |
+| ⚡ **Auto-Reconnect History** | Remembers previously connected devices with 1-click **Auto-Connect All**. |
+| 📸 **Screenshot to Clipboard** | Capture device screenshots directly into clipboard (`Ctrl+V`) and auto-save to disk. |
+| 🛠️ **Flutter Dev Suite** | Run (Debug, Profile, Release), Hot Reload, Hot Restart, Pub Get, Clean, Doctor. |
+| 🧹 **Smart Device Hygiene** | Automatically prunes stale duplicate sockets and isolates offline devices cleanly. |
+
+---
+
+## 🚀 Deep Dive
+
+### 1. 📶 Wireless ADB & QR Pairing
+* **Interactive QR Code (Android 11+)**: Displays a live QR code with an automatic 60-second validity countdown. Open **Wireless Debugging → Pair with QR code** on your Android device and scan the screen to pair instantly.
+* **6-Digit Pairing Code**: Standard manual pairing with host, pairing port, and code.
+* **Legacy TCP/IP (Android 10 & below)**: Switch connected USB devices to wireless mode (`adb tcpip 5555`) with a single click.
+* **Device History**: Remembers your devices. Reconnect individually or hit **⚡ Auto-Connect All** to re-establish your entire multi-device workstation.
+
+### 2. 🖥️ Scrcpy Screen Mirroring
+* Launch low-latency, crystal-clear screen mirroring directly from the device card or toolbar.
+* Control your mobile device using your computer's keyboard and mouse.
+* Launches asynchronously without blocking VS Code or holding terminal processes hostage.
+
+### 3. 🔄 Network Port Forwarding (`adb reverse`)
+* Testing physical devices against a local backend (`http://localhost:8080`, `localhost:3000`, etc.) often fails because the mobile device is on a different network interface.
+* Flutter Device Manager manages `adb reverse tcp:<port> tcp:<port>` with a friendly UI. Add, inspect, and remove active forwards in one click.
+
+### 4. 📋 Live Logcat Stream with Presets & Auto-Scroll
+* **Smart Auto-Scroll**: Streams the latest log lines automatically. Pauses intelligently when you scroll up to inspect a stack trace. Toggle auto-scroll with one click.
+* **1-Click Quick Preset Filters**:
+  * 🌐 **All Logs**: Full raw device stream.
+  * 💙 **Flutter Only**: Isolates Flutter framework and engine output.
+  * 💥 **Fatal Crashes**: Filters directly for `AndroidRuntime:E` exceptions and crash traces.
+  * 📡 **Network / HTTP**: Isolates Dio, OkHttp, Retrofit, and HTTP request logs.
+* Search by keyword, filter by level (Verbose, Debug, Info, Warn, Error), pause stream, copy, and export to `.txt`.
+
+### 5. 🔗 Deep Link & Intent Dispatcher
+* Test app deep linking without manually typing lengthy `adb shell am start` terminal commands:
   ```bash
-  adb shell am start -a android.intent.action.VIEW -d "myapp://checkout?id=42"
+  adb shell am start -a android.intent.action.VIEW -d "myapp://checkout?orderId=1024"
   ```
-- Type any custom URL scheme or HTTPS deep link and launch it directly on the connected phone.
+* Enter your custom URI or HTTPS link, select the target device, and dispatch directly to the screen.
 
-### 6. App Management & Quick Toggles
-- **Clear App Data & Cache**: Instant `pm clear` for third-party packages to reset state.
-- **App Settings / Permissions**: 1-click shortcut into the phone's Application Info settings page.
-- **Toggle Wi-Fi**: Quick switch to test offline/online app behavior.
-- **Install APK**: Pick any APK file from your file system with real-time install progress.
-- **Uninstall App**: Select from installed third-party packages.
-- **Open Shell**: Launches an interactive ADB shell terminal in VS Code.
-
-### 7. Screenshot to Clipboard & Pictures
-- Capture high-resolution device screenshots.
-- Copies the image directly to your OS clipboard (ready to paste into GitHub, Slack, Jira, or Figma with `Ctrl+V`), while simultaneously saving a backup file to your Pictures folder.
-
-### 8. Wireless Wi-Fi Debugging & QR Pairing
-- **QR Code Pairing (Android 11+)**: Displays an interactive QR code with a live 60-second ticking countdown timer. Scan with your phone's camera to pair wirelessly in seconds.
-- **6-Digit Pairing Code**: Enter IP, pairing port, and 6-digit code for standard Android 11+ pairing.
-- **Classic TCP/IP (Android 10 and below)**: Enable wireless over USB via `adb tcpip 5555`.
-- **Device History & Auto-Reconnect**: Remembers previously connected devices. Reconnect individually with ⚡ **Connect** or reconnect all saved phones simultaneously with ⚡ **Auto-Connect All**.
-
-### 9. Flutter Command Toolbar
-- Trigger `flutter run` in **Debug**, **Profile**, or **Release** mode.
-- Interactive hot reload (`r`), hot restart (`R`), stop, and `flutter attach`.
-- Project maintenance tools: `flutter clean`, `pub get`, `pub upgrade`, `flutter doctor`, `flutter analyze`, and `dart format`.
-- Automatically transitions to the **Logs** tab on tool execution so you can inspect build progress in real time.
+### 6. 📱 Application Management & Toggles
+* **Clear Data & Cache**: Instant `pm clear` to reset app state without uninstalling.
+* **App Info & Permissions**: Jump straight to the phone's Application Info settings page.
+* **Toggle Wi-Fi**: Test network disconnects and offline sync behavior instantly.
+* **Install APK**: Pick any `.apk` from your file system with real-time install feedback.
+* **Open ADB Shell**: Launches an interactive shell terminal focused on the target device.
 
 ---
 
-## Requirements
+## 🛠️ Requirements
 
 1. **Android SDK Platform-Tools (`adb`)**:
-   - Ensure `adb` is on your system `PATH`, or set `flutterDeviceManager.adbPath` in VS Code settings.
+   * Must be available in your system `PATH`, or configured via `flutterDeviceManager.adbPath`.
 2. **Flutter SDK**:
-   - Ensure `flutter` is on your system `PATH`, or set `flutterDeviceManager.flutterPath` in VS Code settings.
+   * Must be available in your system `PATH`, or configured via `flutterDeviceManager.flutterPath`.
 3. *(Optional)* **scrcpy**:
-   - For screen mirroring, install [scrcpy](https://github.com/Genymobile/scrcpy) (`choco install scrcpy` or `scoop install scrcpy` on Windows, `brew install scrcpy` on macOS).
+   * For 1-click screen mirroring, install [scrcpy](https://github.com/Genymobile/scrcpy) (`winget install scrcpy`, `choco install scrcpy`, or `brew install scrcpy`).
 
 ---
 
-## Extension Settings
+## ⚙️ Extension Settings
 
 | Setting | Default | Description |
 |---|---|---|
-| `flutterDeviceManager.adbPath` | `""` | Custom path to the `adb` executable. Auto-detected if empty. |
-| `flutterDeviceManager.flutterPath` | `""` | Custom path to the `flutter` executable. Auto-detected if empty. |
-| `flutterDeviceManager.autoRefreshMs` | `5000` | Device poll interval in milliseconds. |
-| `flutterDeviceManager.rememberLastDevice` | `true` | Restore last selected device on startup. |
-| `flutterDeviceManager.autoReconnect` | `true` | Auto-reconnect saved wireless devices on startup. |
-| `flutterDeviceManager.screenshotDir` | `""` | Custom folder for screenshots (defaults to `~/Pictures`). |
-| `flutterDeviceManager.recordingDir` | `""` | Custom folder for screen recordings. |
+| `flutterDeviceManager.adbPath` | `""` | Custom path to the `adb` executable (auto-detected if empty). |
+| `flutterDeviceManager.flutterPath` | `""` | Custom path to the `flutter` executable (auto-detected if empty). |
+| `flutterDeviceManager.autoRefreshMs` | `5000` | Device status poll interval in milliseconds. |
+| `flutterDeviceManager.rememberLastDevice` | `true` | Restores last selected device upon reopening. |
+| `flutterDeviceManager.autoReconnect` | `true` | Auto-reconnects saved wireless devices on startup. |
+| `flutterDeviceManager.screenshotDir` | `""` | Folder to save screenshots (defaults to `~/Pictures`). |
+| `flutterDeviceManager.recordingDir` | `""` | Folder to save screen recordings. |
 
 ---
 
-## Support & Community
+## 💡 Support & Community
 
-If Flutter Device Manager saves you time, consider supporting future development:
+Flutter Device Manager is actively maintained by **SKR Electronics Lab**. If this tool saves you time, consider supporting future development:
 
-[![Support on Ko-fi](https://img.shields.io/badge/Support_on-Ko--fi-ff5e5b?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/skrelectronicslab)
+<p align="left">
+  <a href="https://ko-fi.com/skrelectronicslab" target="_blank">
+    <img src="https://img.shields.io/badge/Support_on-Ko--fi-ff5e5b?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support on Ko-fi" />
+  </a>
+</p>
 
-- **Author**: SK Raihan (SKR Electronics Lab)
-- **Website**: [skrelectronicslab.com](https://skrelectronicslab.com)
-- **YouTube**: [@skr_electronics_lab](https://youtube.com/@skr_electronics_lab)
-- **Instagram**: [@skr_electronics_lab](https://instagram.com/skr_electronics_lab)
-- **Twitter / X**: [@skrelectronics](https://twitter.com/skrelectronics)
+* **Author**: SK Raihan
+* **Website**: [skrelectronicslab.com](https://skrelectronicslab.com)
+* **YouTube**: [@skr_electronics_lab](https://youtube.com/@skr_electronics_lab)
+* **Instagram**: [@skr_electronics_lab](https://instagram.com/skr_electronics_lab)
+* **Twitter / X**: [@skrelectronics](https://twitter.com/skrelectronics)
+* **Email**: [skrelectronicslab@gmail.com](mailto:skrelectronicslab@gmail.com)
 
 ---
 
-## License
+## 📄 License
 
-MIT License. Designed and crafted for developers.
+This extension is licensed under the [MIT License](LICENSE). Built with ❤️ for the Flutter & Android developer community.
