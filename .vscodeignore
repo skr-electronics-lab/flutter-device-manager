@@ -1,7 +1,10 @@
-node_modules/
-.vscode-test/
-.git/
+.vscode/**
+.vscode-test/**
+.git/**
+node_modules/**
 *.vsix
 *.log
 **/*.map
-.vscode/**
+.gitignore
+tsconfig*.json
+src/**

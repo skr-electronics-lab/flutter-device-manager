@@ -14,6 +14,10 @@
     "type": "git",
     "url": "https://github.com/skr-electronics-lab/flutter-device-manager.git"
   },
+  "homepage": "https://github.com/skr-electronics-lab/flutter-device-manager#readme",
+  "bugs": {
+    "url": "https://github.com/skr-electronics-lab/flutter-device-manager/issues"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
